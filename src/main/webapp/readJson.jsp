@@ -12,6 +12,6 @@
 </head>
 <body>
     <button id="btn">load Json</button>
-    <script src="/static/js/readJason.js"></script>
+    <script src="/static/js/readJson.js"></script>
 </body>
 </html>

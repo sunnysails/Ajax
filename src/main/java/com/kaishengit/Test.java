@@ -1,5 +1,6 @@
 package com.kaishengit;
 
+import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -10,13 +11,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by sunny on 2016/12/7.
  */
 public class Test {
     public static void main(String[] args) throws IOException {
-       //创建一个可以发送请求的客户端。
+        List<String> name = Arrays.asList( "jack","rose","tom" );
+        String json = new Gson().toJson( name );
+        System.out.println( json );
+
+/*       //创建一个可以发送请求的客户端。
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         HttpGet httpGet = new HttpGet("http://ww1.sinaimg.cn/mw690/824de770jw1epwcnivby6j20go0p00x4.jpg");
@@ -36,7 +43,7 @@ public class Test {
             System.out.println("服务器异常：");
         }
         httpClient.close();
-
+*/
 
 /*
         //创建一个可以发送请求的客户端。
