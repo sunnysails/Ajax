@@ -15,11 +15,22 @@
     <input type="text" placeholder="RSS URL" id="url">
     <button id="btn">点我</button>
     <ur id="newList"></ur>
+
     <script src="/static/js/jquery-1.11.3.min.js"></script>
+    <script src="/static/js/handlebars-v4.0.5.js"></script>
+
+    <script type="text/template" id="temp1">
+        <li>
+            <a href="{{link}}" target="_blank">{{title}}</a>
+        </li>
+    </script>
+
+
     <script>
         $(function () {
             $("#btn").click(function () {
                 var rssUrl = $("#url").val();
+                $("#newsList").html("");
                 $.ajax({
                     url : "/rss.xml",
                     type : "get",
@@ -28,7 +39,17 @@
                         $(xmlDoc).find("item").each(function () {
                             var title = $(this).find("title").text();
                             var link = $(this).find("link").text();
-                            $("<li><a href='"+link+"' target='_blank' >"+title+"</a></li>").appendTo($("#newList"))
+
+                            var source = $("#temp1").html();
+                            var template = Handlebars.compile(source);
+
+                            var data = {
+                                "title" : title,
+                                "link" : link,
+                            };
+                            var html = template(data);
+
+                            $(html).appendTo($("#newList"));
                         });
 
                     } ,
