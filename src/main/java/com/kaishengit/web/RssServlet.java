@@ -14,7 +14,7 @@ import java.io.PrintWriter;
  * Created by sunny on 2016/12/7.
  */
 @WebServlet("/rss.xml")
-public class RssServlet extends HttpServlet {
+public class RssServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

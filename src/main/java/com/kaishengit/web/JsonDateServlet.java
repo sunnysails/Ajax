@@ -5,7 +5,6 @@ import com.kaishengit.entity.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,11 +16,10 @@ import java.util.List;
  * Created by sunny on 2016/12/7.
  */
 @WebServlet("/data.json")
-public class JsonDateServlet extends HttpServlet {
+public class JsonDateServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding( "UTF-8" );
-        resp.setContentType( "application/json;charset=UTF-8" );
+
         Users user = new Users(1,"李四","北京");
         Users user1 = new Users(12,"王明明","上海");
         Users user2 = new Users(23,"赵丽丽","郑州");
